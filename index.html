@@ -879,14 +879,6 @@ s => s.nisn === nisn
 );
 
 if(!siswaData){
-  document.querySelector(".input-group").style.display="none";
-
-document.querySelector("button").style.display="none";
-
-document.querySelector(".search-title").style.display="none";
-
-document.querySelector(".search-desc").style.display="none";
-
 hasil.innerHTML = `
 <div class="result-card result-error">
 
@@ -904,6 +896,13 @@ Pastikan NISN yang dimasukkan sesuai dengan data yang terdaftar.
 return;
 
 }
+   document.querySelector(".input-group").style.display="none";
+
+document.querySelector("button").style.display="none";
+
+document.querySelector(".search-title").style.display="none";
+
+document.querySelector(".search-desc").style.display="none";
 
 hasil.innerHTML = `
 <div class="result-card result-success">
