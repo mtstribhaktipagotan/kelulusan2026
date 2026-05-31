@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pengumuman Kelulusan MTs Tri Bhakti</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f5;margin:0;color:#222}
+.container{max-width:800px;margin:auto;padding:20px}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.header{text-align:center}
+.logo{width:100px}
+.line{height:4px;background:#0f6b3e;margin:15px 0}
+.countdown{display:flex;gap:10px;justify-content:center}
+.box{background:#0f6b3e;color:#fff;padding:10px;border-radius:8px;min-width:70px;text-align:center}
+input,button{width:100%;padding:12px;margin-top:10px;box-sizing:border-box}
+button{background:#0f6b3e;color:white;border:none;cursor:pointer}
+.success{border-left:5px solid green;padding:15px;background:#eef9ee}
+.error{border-left:5px solid red;padding:15px;background:#fdecec}
+.status{font-size:32px;font-weight:bold;color:green;text-align:center}
+footer{text-align:center;margin-top:20px;color:#666}
+</style></head>
+<body>
+<div class="container">
+<div class="card header">
+<img class="logo" src="https://drive.google.com/thumbnail?id=1csQGKjP2wcooBM-evHkLBrJS3-t-p6cH&sz=w1000">
+<h4>KEMENTERIAN AGAMA REPUBLIK INDONESIA</h4>
+<h2>MTs TRI BHAKTI</h2>
+<h3>PENGUMUMAN KELULUSAN PESERTA DIDIK</h3>
+<p>Tahun Pelajaran 2025/2026</p>
+<div class="line"></div>
+
+<div id="countSection">
+<div class="countdown">
+<div class="box"><div id="d">0</div>Hari</div>
+<div class="box"><div id="h">0</div>Jam</div>
+<div class="box"><div id="m">0</div>Menit</div>
+<div class="box"><div id="s">0</div>Detik</div>
+</div>
+<p>Pengumuman kelulusan peserta didik akan dibuka pada tanggal 2 Juni 2026 pukul 07.00 WIB.</p>
+</div>
+
+<div id="searchSection" style="display:none">
+<h3>Masukkan Nomor Induk Siswa Nasional (NISN)</h3>
+<input id="nisn" maxlength="10" inputmode="numeric">
+<button onclick="cek()">CEK KELULUSAN</button>
+</div>
+
+<div id="hasil"></div>
+</div>
+
+<footer>
+MTs Tri Bhakti<br>
+© 2026 MTs Tri Bhakti<br>
+Pengumuman ini diterbitkan secara resmi oleh MTs Tri Bhakti.
+</footer>
+</div>
+
+<script>
+const siswa=[{nama:"ALAINA MAFAZA HASANA",nisn:"3114144921",status:"LULUS"},
+{nama:"MUCHAMMAD TIVA SAPUTRA",nisn:"3109332757",status:"LULUS"},
+{nama:"ANGGRAINI PUSPITANINGRUM",nisn:"3105410490",status:"LULUS"},
+{nama:"ALIFAH KHOIRUNNISA'",nisn:"3116389849",status:"LULUS"},
+{nama:"AQILA NUR FAIZAH",nisn:"3104671364",status:"LULUS"},
+{nama:"MELATI MAULIDA LATHIFATUS",nisn:"3116453498",status:"LULUS"},
+{nama:"MUHAMMAD SHOFWAN NURIL HUDA",nisn:"3108800444",status:"LULUS"},
+{nama:"RAFI RIDWANI WIRAWAN",nisn:"3105686254",status:"LULUS"},
+{nama:"DIMAS IMAM AL BAIHAQI",nisn:"0108665647",status:"LULUS"},
+{nama:"DWI NOVITASARI",nisn:"3106356999",status:"LULUS"},
+{nama:"ALMAS NURI HASNA",nisn:"3104567598",status:"LULUS"},
+{nama:"RABI'AH ADAWIYAH",nisn:"3105789626",status:"LULUS"},
+{nama:"AHMAD ZIYYAN HARIRI AL-KAMAL",nisn:"3094777159",status:"LULUS"},
+{nama:"FATIHA HUSNA KAMILA",nisn:"3102035450",status:"LULUS"},
+{nama:"RAFA PRADIPTA LISTIYAN",nisn:"3115946831",status:"LULUS"},
+{nama:"SABRINA FITRI KHOIRUNISA",nisn:"3119127586",status:"LULUS"},
+{nama:"ROZAQ DANISH FARZANA",nisn:"3101833317",status:"LULUS"},
+{nama:"MUHAMMAD MUBAROK ABDUL",nisn:"0109415761",status:"LULUS"},
+{nama:"MUHAMMAD RIZQI RAMADHAN",nisn:"0084620220",status:"LULUS"},
+{nama:"MUHAMAD FATHUR RAHMAN",nisn:"0113449026",status:"LULUS"},
+{nama:"LULUK ZAHROTUL BADRIYAH",nisn:"0103186146",status:"LULUS"},
+{nama:"GAGAH SATRIA ARJUNA WIJAYA",nisn:"3117680087",status:"LULUS"},
+{nama:"ADY PUTRA TAHER",nisn:"0103615787",status:"LULUS"},
+{nama:"ALVIAN ARGA PUTRA PRATAMA",nisn:"0106305655",status:"LULUS"},
+{nama:"ZAFI BISYUKRI ASYARIFI",nisn:"3104809370",status:"LULUS"},
+{nama:"MUHAMMAD DAANISH PARVEZ",nisn:"3117760504",status:"LULUS"},
+{nama:"LAILATUL MUYASYAROH",nisn:"0091457038",status:"LULUS"},
+{nama:"MUH. TAUFIQ NUR AZZIZ",nisn:"3103296820",status:"LULUS"},
+{nama:"ROYYAN ZUMAROL WAFA",nisn:"3108619976",status:"LULUS"},
+{nama:"FARID AHMAD ALFARISY",nisn:"3116141703",status:"LULUS"},
+{nama:"HAFIZHAH TRI RAHMADHINI",nisn:"0108794225",status:"LULUS"},
+{nama:"HAFIDHOH SEKTI DEWANTI",nisn:"3109730028",status:"LULUS"},
+{nama:"FAIZAH ALYA NURHUDA",nisn:"3109669273",status:"LULUS"},
+{nama:"HAMZAH ADLAN SYAH",nisn:"3111867573",status:"LULUS"},
+{nama:"ALI SURYA DHARMA",nisn:"3113074889",status:"LULUS"},
+{nama:"HUSNA MAGFIROH",nisn:"3109753575",status:"LULUS"},
+{nama:"CHOIRUN NIZAM KISWANTO",nisn:"3119696183",status:"LULUS"},
+{nama:"KUNTI DHORIIFAH",nisn:"0118554693",status:"LULUS"},
+{nama:"AHMAD HUSIN ROHMATULLOH",nisn:"3117472167",status:"LULUS"},
+{nama:"MUHAMMAD FARID IKHSAN AZIZI",nisn:"0107733156",status:"LULUS"},
+{nama:"SHELYTA SEPTIA LAILA NUR FITRAH",nisn:"3096359428",status:"LULUS"},
+{nama:"MOHAMMAD FAUZAN ALFA UTAMA",nisn:"3103339195",status:"LULUS"},
+{nama:"AHMAD MUHSININ",nisn:"3104662257",status:"LULUS"},
+{nama:"AISYAH DWI CAHYANI",nisn:"0115010964",status:"LULUS"},
+{nama:"FIRDA LUTFIANA",nisn:"0118141311",status:"LULUS"},
+{nama:"ZAINATUSY SYARIFAH",nisn:"0116323964",status:"LULUS"},
+{nama:"KHALIMATUS SA'DIYAH",nisn:"0117251932",status:"LULUS"},
+{nama:"MARCANDA LCHA NADIA",nisn:"0112970570",status:"LULUS"},
+{nama:"SUBQI NUR RAFIQ",nisn:"0117960680",status:"LULUS"},
+{nama:"SHOFYAN AFNAN FAEZA",nisn:"0103351096",status:"LULUS"},
+{nama:"HILYA FAUZIAH ZAHRO",nisn:"3100590282",status:"LULUS"},
+{nama:"OKKY ADRIAN NURRIZKI",nisn:"0111080190",status:"LULUS"},
+{nama:"HEFITA AMANDA NOVIANI",nisn:"0097653306",status:"LULUS"}];
+
+function showSearch(){
+document.getElementById('countSection').style.display='none';
+document.getElementById('searchSection').style.display='block';
+}
+
+const target=new Date('2026-06-02T07:00:00+07:00');
+function timer(){
+const now=new Date();
+const diff=target-now;
+if(diff<=0){showSearch();return;}
+document.getElementById('d').textContent=Math.floor(diff/86400000);
+document.getElementById('h').textContent=Math.floor(diff%86400000/3600000);
+document.getElementById('m').textContent=Math.floor(diff%3600000/60000);
+document.getElementById('s').textContent=Math.floor(diff%60000/1000);
+}
+setInterval(timer,1000); timer();
+
+function cek(){
+const n=document.getElementById('nisn').value.trim();
+const d=siswa.find(x=>x.nisn===n);
+const h=document.getElementById('hasil');
+if(d){
+h.innerHTML=`<div class="success"><h3>DATA PESERTA DIDIK</h3>
+<p><b>Nama:</b> ${d.nama}</p>
+<p><b>NISN:</b> ${d.nisn}</p>
+<div class="status">LULUS</div></div>`;
+}else{
+h.innerHTML=`<div class="error"><h3>DATA TIDAK DITEMUKAN</h3>
+<p>NISN yang dimasukkan tidak terdaftar dalam sistem pengumuman kelulusan MTs Tri Bhakti.</p></div>`;
+}
+}
+
+document.getElementById('nisn')?.addEventListener('keypress',e=>{if(e.key==='Enter')cek();});
+</script>
+</body></html>
